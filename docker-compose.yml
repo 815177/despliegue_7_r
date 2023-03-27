@@ -1,0 +1,25 @@
+version: "2.0"
+
+services:
+  api:
+    container_name: api_7_r
+    restart: always
+    ports:
+      - "3001:3001"
+    image: 815177/api_7_r:latest
+    
+  postgres:
+    container_name: postgres_7_r
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=frances
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=Pro_Soft
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+ 
+
